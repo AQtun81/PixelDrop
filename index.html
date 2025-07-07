@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>PixelDrop</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  
+<div id="hSplit">
+  <div id="sidebar" class="pixel">
+    <H3>INPUT</H3>
+    <div class="file-drop-area">
+      <span>Choose image</span>
+      <span class="small">or drag and drop it here</span>
+      <input id="image_input" type="file" accept="image/*">
+    </div>
+    <H3>PRE-PROCESS</H3>
+    <label value="1">
+      Pixelate
+      <input type="range" min="1" max="16" value="1" default="1" oninput="updateRange(this, window.cs.setPixelate);">
+    </label>
+    <label value="1">
+      Blur
+      <input type="range" min="1" max="16" step="0.01" value="1" default="1" oninput="updateRange(this, window.cs.setBlur);">
+    </label>
+    <label value="1">
+      Brightness
+      <input type="range" min="0" max="3" step="0.01" value="1" default="1" oninput="updateRange(this, window.cs.setBrightness);">
+    </label>
+    <label value="1">
+      Contrast
+      <input type="range" min="0" max="3" step="0.01" value="1" default="1" oninput="updateRange(this, window.cs.setContrast);">
+    </label>
+    <label value="1">
+      Saturation
+      <input type="range" min="0" max="3" step="0.01" value="1" default="1" oninput="updateRange(this, window.cs.setSaturation);">
+    </label>
+    <label value="0">
+      Hue
+      <input type="range" min="-180" max="180" step="0.5" value="0" default="0" oninput="updateRange(this, window.cs.setHue);">
+    </label>
+    <H3>PALETTE</H3>
+    <div class="file-drop-area">
+      <span>Choose palette image</span>
+      <span class="small">or drag and drop it here</span>
+      <input id="palette_input" type="file" accept="image/*">
+    </div>
+    <label value="64">
+      Palette Reduction
+      <input type="range" min="1" max="64" step="1" value="64" default="64" oninput="updateRange(this, window.cs.setPaletteReduction);">
+    </label>
+  </div>
+  <div id="image_container">
+    <canvas id="image_preview"></canvas>
+    <button id="save" onclick="saveImage()">SAVE</button>
+  </div>
+</div>
+
+<div id="info_bar">
+  <div id="leftInfo"></div>
+  <div id="rightInfo"></div>
+</div>
+
+<script type='module' src="js/main.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
